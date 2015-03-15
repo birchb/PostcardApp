@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var enterNameTextField: UITextField!
     @IBOutlet weak var enterMessageTextField: UITextField!
@@ -27,13 +29,19 @@ class ViewController: UIViewController {
     }
 
     @IBAction func sendMailButtonPressed(sender: UIButton) {
-        // Adding a comment to test git.
+        // This is what happens when the "send mail" button is clicked.
+        nameLabel.hidden = false
         messageLabel.hidden = false
-        messageLabel.text = "Hi, " + enterNameTextField.text + ". \n" + enterMessageTextField.text
-        //messageLabel.textColor = UIColor.redColor()
         
+        //moving the messages to the labels
+        nameLabel.text = "Hi, " + enterNameTextField.text + "."
+        messageLabel.text = enterMessageTextField.text
+        
+        //clean up
         enterNameTextField.text = ""
         enterNameTextField.resignFirstResponder()
+        enterMessageTextField.text = ""
+        enterMessageTextField.resignFirstResponder()
         
         mailButton.setTitle("Mail Sent", forState: UIControlState.Normal)
     }
